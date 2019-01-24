@@ -28,9 +28,9 @@
 %%
 \documentclass{mcmthesis}
 \mcmsetup{CTeX = true,   % 使用 CTeX 套装时，设置为 true
-        tcn = 0000, problem = A,
+        tcn = 70000, problem = B,
         sheet = true, titleinsheet = true, keywordsinsheet = true,
-        titlepage = true, abstract = true}
+        titlepage = false, abstract = true}
 \usepackage{palatino}
 \usepackage{lipsum}
 \title{The \LaTeX{} Template for MCM Version \MCMversion}
@@ -45,6 +45,9 @@ keyword1; keyword2
 \end{keywords}
 \end{abstract}
 \maketitle
+\tableofcontents
+\newpage
+
 \section{Introduction}
 
 \lipsum[2]
