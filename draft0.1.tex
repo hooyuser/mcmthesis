@@ -79,6 +79,8 @@ keyword1; keyword2
 
 \noindent $P_\alpha$: The max payload capability of the drone $\alpha$, where $\alpha=A,B,\cdots,H$.
 
+\noindent $d$: The supporting days for the medical package demand of all 5 locations.
+
 \noindent $M$: A sufficiently large number for big-$M$ method in integer programming. 
 \[
 \begin{aligned}
@@ -140,126 +142,50 @@ X,Y,Z,X_\alpha,Y_\alpha,Z_\alpha,X_{\alpha ij},Y_{\alpha ij},Z_{\alpha ij} \text
 \end{aligned}
 \]
 
-\section{Model 2: Maximizing Days}
-
-\[
-\begin{aligned}
-\max\quad d
-\end{aligned}
-\]
-\[
-\begin{aligned}
-\text{s.t.}
-\left\{
-\begin{array}{lr}
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}X_{\alpha ij}\le 8\times 10\times 14\ \text{ if }\alpha=A,B,D \\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}X_{\alpha ij}\le 24\times 20\times 20\ \text{ if }\alpha=C,E,F,G \\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Y_{\alpha ij}\le 8\times 10\times 14\ \text{ if }\alpha=A,B,D \\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Y_{\alpha ij}\le 24\times 20\times 20\ \text{ if }\alpha=C,E,F,G \\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Z_{\alpha ij}\le 8\times 10\times 14\ \text{ if }\alpha=A,B,D \\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Z_{\alpha ij}\le 24\times 20\times 20\ \text{ if }\alpha=C,E,F,G \\
-\sum\limits_{\alpha=A}^{H}V_{\alpha}X_{\alpha}+\sum\limits_{\alpha=A}^{H}\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}X_{\alpha ij}\le 231\times92\times 94\\
-\sum\limits_{\alpha=A}^{H}V_{\alpha}Y_{\alpha}+\sum\limits_{\alpha=A}^{H}\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Y_{\alpha ij}\le 231\times92\times 94\\
-\sum\limits_{\alpha=A}^{H}V_{\alpha}Z_{\alpha}+\sum\limits_{\alpha=A}^{H}\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Z_{\alpha ij}\le 231\times92\times 94\\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}X_{\alpha ij}\le M X_{\alpha}\ \text{ for }\alpha=A,B,\cdots, G\\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}Y_{\alpha ij}\le M X_{\alpha}\ \text{ for }\alpha=A,B,\cdots, G\\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}Z_{\alpha ij}\le M X_{\alpha}\ \text{ for }\alpha=A,B,\cdots, G\\
-\sum\limits_{\alpha=A}^{H}X_\alpha\le MX\\
-\sum\limits_{\alpha=A}^{H}Y_\alpha\le MY\\
-\sum\limits_{\alpha=A}^{H}Z_\alpha\le MZ\\
-X\le 1\\
-Y\le 1\\
-Z\le 1\\
-\sum\limits_{j=1}^{5}\left(2X_{\alpha 1 j}+2X_{\alpha 2 j}+3X_{\alpha 3 j}\right)\le P_\alpha\text{ for }\alpha=A,B,\cdots, G\\
-\sum\limits_{j=1}^{5}\left(2Y_{\alpha 1 j}+2Y_{\alpha 2 j}+3Y_{\alpha 3 j}\right)\le P_\alpha\text{ for }\alpha=A,B,\cdots, G\\
-\sum\limits_{j=1}^{5}\left(2Z_{\alpha 1 j}+2Z_{\alpha 2 j}+3Z_{\alpha 3 j}\right)\le P_\alpha\text{ for }\alpha=A,B,\cdots, G\\
-\end{array}
-\right.
-\end{aligned}
-\]
-\[
-\begin{aligned}
-\text{s.t.}&
-\left\{
-\begin{array}{lr}
-\sum\limits_{\alpha=A}^{H}X_{\alpha 11}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 31}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 12}\ge 2d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 32}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 13}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 23}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 14}\ge 2d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 24}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 34}\ge 2d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 15}\ge d\\
-X,Y,Z,X_\alpha,Y_\alpha,Z_\alpha,X_{\alpha ij},Y_{\alpha ij},Z_{\alpha ij} \text{ are nonnegative integers.}
-
-\end{array}
-\right.
-\end{aligned}
-\]
 
 
 
 \section{Model 2}
+
+\noindent $R$: A parameter indicating the significance of the video reconnaissance of road networks compared to medical supply delivery. 
+
+\noindent $l_\alpha$: The max flight distance of the drone $\alpha$.
+
+\noindent $T$: The number of the nodes in the network.
+
+\noindent $U_{Xm}$: $U_{Xm}=1$ if container $X$ is located at node $m$, where $m=1,2,\cdots,T$. Otherwise $U_{Xm}=0$.
+
+\noindent $U_{Ym}$: $U_{Ym}=1$ if container $Y$ is located at node $m$, where $m=1,2,\cdots,T$. Otherwise $U_{Ym}=0$.
+
+\noindent $U_{Xm}$: $U_{Zm}=1$ if container $Z$ is located at node $m$, where $m=1,2,\cdots,T$. Otherwise $U_{Zm}=0$.
+
+\noindent $f(m,j)$: The length of the shortest path from node $m$ to node $j$.
+
 \[
 \begin{aligned}
 \min\quad&\sum_{\alpha=A}^{H}\sum_{i=1}^{3}\sum_{j=1}^{5}c_{i}\left(X_{\alpha ij}+Y_{\alpha ij}+Z_{\alpha ij}\right)
 +\sum_{\alpha=A}^{H}C_{{\alpha}}\left(X_{\alpha}+Y_{\alpha }+Z_{\alpha }\right)+W(X+Y+Z)\\
-&-R\sum_{k=1}^{K}\sum_{l=1}^{L}S_{kl}T_{kl}
+&-R\sum_{\alpha=A}^{H}l_\alpha (X_\alpha+Y_\alpha+Z_\alpha)
 \end{aligned}
 \]
-\[
-\begin{aligned}
-\text{s.t.}
-\left\{
-\begin{array}{lr}
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}X_{\alpha ij}\le 8\times 10\times 14\ \text{ if }\alpha=A,B,D \\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}X_{\alpha ij}\le 24\times 20\times 20\ \text{ if }\alpha=C,E,F,G \\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Y_{\alpha ij}\le 8\times 10\times 14\ \text{ if }\alpha=A,B,D \\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Y_{\alpha ij}\le 24\times 20\times 20\ \text{ if }\alpha=C,E,F,G \\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Z_{\alpha ij}\le 8\times 10\times 14\ \text{ if }\alpha=A,B,D \\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Z_{\alpha ij}\le 24\times 20\times 20\ \text{ if }\alpha=C,E,F,G \\
-\sum\limits_{\alpha=A}^{H}V_{\alpha}X_{\alpha}+\sum\limits_{\alpha=A}^{H}\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}X_{\alpha ij}\le 231\times92\times 94\\
-\sum\limits_{\alpha=A}^{H}V_{\alpha}Y_{\alpha}+\sum\limits_{\alpha=A}^{H}\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Y_{\alpha ij}\le 231\times92\times 94\\
-\sum\limits_{\alpha=A}^{H}V_{\alpha}Z_{\alpha}+\sum\limits_{\alpha=A}^{H}\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}v_{i}Z_{\alpha ij}\le 231\times92\times 94\\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}X_{\alpha ij}\le M X_{\alpha}\ \text{ for }\alpha=A,B,\cdots, G\\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}Y_{\alpha ij}\le M X_{\alpha}\ \text{ for }\alpha=A,B,\cdots, G\\
-\sum\limits_{i=1}^{3}\sum\limits_{j=1}^{5}Z_{\alpha ij}\le M X_{\alpha}\ \text{ for }\alpha=A,B,\cdots, G\\
-\sum\limits_{\alpha=A}^{H}X_\alpha\le MX\\
-\sum\limits_{\alpha=A}^{H}Y_\alpha\le MY\\
-\sum\limits_{\alpha=A}^{H}Z_\alpha\le MZ\\
-X\le 1\\
-Y\le 1\\
-Z\le 1\\
-\sum\limits_{j=1}^{5}\left(2X_{\alpha 1 j}+2X_{\alpha 2 j}+3X_{\alpha 3 j}\right)\le P_\alpha\text{ for }\alpha=A,B,\cdots, G\\
-\sum\limits_{j=1}^{5}\left(2Y_{\alpha 1 j}+2Y_{\alpha 2 j}+3Y_{\alpha 3 j}\right)\le P_\alpha\text{ for }\alpha=A,B,\cdots, G\\
-\sum\limits_{j=1}^{5}\left(2Z_{\alpha 1 j}+2Z_{\alpha 2 j}+3Z_{\alpha 3 j}\right)\le P_\alpha\text{ for }\alpha=A,B,\cdots, G\\
-\end{array}
-\right.
-\end{aligned}
-\]
+Additional constraints:
 \[
 \begin{aligned}
 \text{s.t.}&
 \left\{
 \begin{array}{lr}
-\sum\limits_{\alpha=A}^{H}X_{\alpha 11}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 31}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 12}\ge 2d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 32}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 13}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 23}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 14}\ge 2d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 24}\ge d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 34}\ge 2d\\
-\sum\limits_{\alpha=A}^{H}X_{\alpha 15}\ge d\\
-X,Y,Z,X_\alpha,Y_\alpha,Z_\alpha,X_{\alpha ij},Y_{\alpha ij},Z_{\alpha ij} \text{ are nonnegative integers.}
-
+\sum\limits_{m=1}^{T}U_{Xm}=1\\
+\sum\limits_{m=1}^{T}U_{Ym}=1\\
+\sum\limits_{m=1}^{T}U_{Zm}=1\\
+\sum\limits_{i=1}^3X_{\alpha ij}\le M(1-U_{Xm})\text{ if }l_{\alpha}< f(m,j)  ,\text{ for }\alpha=A,\cdots,G,m=1,\cdots,T,j=1,\cdots,5\\
+\sum\limits_{i=1}^3Y_{\alpha ij}\le M(1-U_{Ym})\text{ if }l_{\alpha}< f(m,j)  ,\text{ for }\alpha=A,\cdots,G,m=1,\cdots,T,j=1,\cdots,5\\
+\sum\limits_{i=1}^3Z_{\alpha ij}\le M(1-U_{Zm})\text{ if }l_{\alpha}< f(m,j)  ,\text{ for }\alpha=A,\cdots,G,m=1,\cdots,T,j=1,\cdots,5\\
+U_{Xm},U_{Ym},U_{Zm} \in \{0,1\}
 \end{array}
 \right.
 \end{aligned}
 \]
+
 \section{Introduction}
 
 \lipsum[2]

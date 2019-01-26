@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.3.25)  25 JAN 2019 23:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.3.25)  26 JAN 2019 11:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -703,7 +703,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [1]
-Overfull \hbox (8.18175pt too wide) detected at line 90
+Overfull \hbox (8.18175pt too wide) detected at line 92
 [][]
  []
 
@@ -721,21 +721,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [3]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[4]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[5]
-Overfull \hbox (6.18178pt too wide) detected at line 211
+Overfull \hbox (6.18178pt too wide) detected at line 170
 [][]
  []
 
@@ -745,21 +731,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6]
+[4]
+Overfull \hbox (58.03079pt too wide) detected at line 187
+[][]
+ []
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 193.
 
-[7]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 267.
-
- (c:/texlive/2016/texmf-dist/tex/latex/psnfss/omsppl.fd
+(c:/texlive/2016/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 267.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 193.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -767,9 +750,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[8]
+[5]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 297.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 223.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -777,7 +760,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[9]
+[6]
 Package epstopdf Info: Source file: <./figures/mcmthesis-aaa.eps>
 (epstopdf)                    date: 2016-08-15 15:39:29
 (epstopdf)                    size: 458067 bytes
@@ -787,15 +770,15 @@ df>
 (epstopdf)                    size: 78739 bytes
 (epstopdf)             Command: <epstopdf --outfile=./figures/mcmthesis-aaa-eps
 -converted-to.pdf ./figures/mcmthesis-aaa.eps>
-(epstopdf)             \includegraphics on input line 312.
+(epstopdf)             \includegraphics on input line 238.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/mcmthesis-aaa-eps-converted-to.pdf, id=154, 421.575pt x 317.185pt>
+<./figures/mcmthesis-aaa-eps-converted-to.pdf, id=134, 421.575pt x 317.185pt>
 File: ./figures/mcmthesis-aaa-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figures/mcmthesis-aaa-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/mcmthesis-aaa-eps-converted-to.pdf used on i
-nput line 312.
+nput line 238.
 (pdftex.def)             Requested size: 341.43306pt x 256.89423pt.
 
 
@@ -807,56 +790,57 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
+[7]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8 <./figures/mcmthesis-aaa-eps-converted-to.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
 [10]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[11 <./figures/mcmthesis-aaa-eps-converted-to.pdf>]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[12]
-Underfull \hbox (badness 1237) in paragraph at lines 381--384
+Underfull \hbox (badness 1237) in paragraph at lines 307--310
 []\T1/ppl/m/n/12 D. E. KNUTH The T[]Xbook the Amer-i-can Math-e-mat-i-cal So-ci
 -ety and
  []
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[13]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 386.
- (c:/texlive/2016/texmf-dist/tex/latex/psnfss/t1pcr.fd
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 312.
+(c:/texlive/2016/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 396--397
+Underfull \hbox (badness 10000) in paragraph at lines 322--323
 
  []
 
 (./code/mcmthesis-matlab1.m
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10> not available
 (Font)              Font shape `T1/pcr/b/n' tried instead on input line 1.
-) (./code/mcmthesis-sudoku.cpp
-Overfull \hbox (43.94443pt too wide) in paragraph at lines 1--2
-[][][][][][][][][] 
- []
-
+)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[14]
+[11] (./code/mcmthesis-sudoku.cpp
+Overfull \hbox (43.94443pt too wide) in paragraph at lines 1--2
+[][][][][][][][][] 
+ []
+
+
 Overfull \hbox (43.94443pt too wide) in paragraph at lines 7--9
 [][][][][][][][][] 
  []
@@ -869,23 +853,23 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 407.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 407.
+[12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 333.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 333.
  (./draft0.1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 407.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 407.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 333.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 333.
 Package rerunfilecheck Info: File `draft0.1.out' has not changed.
-(rerunfilecheck)             Checksum: 764BCEDEBD7721CB322E964CE8B69C25;921.
+(rerunfilecheck)             Checksum: F548B765CAD2148071E5F9643D8C91D8;861.
  ) 
 Here is how much of TeX's memory you used:
- 11411 strings out of 493013
- 157166 string characters out of 6136993
- 430500 words of memory out of 5000000
- 14570 multiletter control sequences out of 15000+600000
+ 11406 strings out of 493013
+ 157123 string characters out of 6136993
+ 433712 words of memory out of 5000000
+ 14569 multiletter control sequences out of 15000+600000
  48088 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,16n,100p,886b,1958s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 47i,16n,100p,886b,1691s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2016/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2016/texmf-dist/fonts/type1
@@ -899,10 +883,10 @@ w/helvetic/uhvb8a.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr
 8a.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texl
 ive/2016/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2016/texmf-
 dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on draft0.1.pdf (16 pages, 266160 bytes).
+Output written on draft0.1.pdf (13 pages, 265473 bytes).
 PDF statistics:
- 326 PDF objects out of 1000 (max. 8388607)
- 289 compressed objects within 3 object streams
- 95 named destinations out of 1000 (max. 500000)
- 142 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 306 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
+ 91 named destinations out of 1000 (max. 500000)
+ 134 words of extra memory for PDF output out of 10000 (max. 10000000)
 
