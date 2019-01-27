@@ -37,6 +37,8 @@
 \author{\small \href{http://www.latexstudio.net/}
   {\includegraphics[width=7cm]{mcmthesis-logo}}}
 \date{\today}
+\usepackage{geometry}
+\geometry{a4paper,left=2.6cm,right=2.6cm,top=3cm,bottom=3cm}
 \begin{document}
 \begin{abstract}
 \lipsum[1]
@@ -47,6 +49,91 @@ keyword1; keyword2
 \maketitle
 \tableofcontents
 \newpage
+
+\section{General Assumptions}
+\textbf{Assumption I}: DroneGo disaster response system consists of up to three ISO cargo containers, a DroneGo fleet and some emergency medical packages. 
+
+\noindent The three cargo containers are identical with standard size, designated as Container A, Container B and Container C respectively. The DroneGo fleet is a combination of drones selected from eight types of potential candidates, namely Drone A to Drone H. Only three types of emergency medical packages are available, referred to as MED 1, MED 2, and MED 3.
+
+\noindent\textbf{Assumption II}: DroneGo disaster response system is designed for possible Puerto Rico hurricane disaster. 
+
+\noindent When disasters occurs, a DroneGo fleet and some emergency medical packages will be packed in up to three cargo containers first of all. 
+
+\noindent Next, each cargo container will be transported to one of the 32 populated places, which are represented by yellow square in Attachment 1, to ensure that DroneGo disaster response system can be timely discovered and well operated. 
+
+\noindent Then both drones and medical packages will be taken out of the containers, and afterwards the latter will be packed into the drone cargo bay that is in fixed connection with the drone. 
+
+\noindent Finally, all drones will depart from the up to three container locations and fly along the main roads on schedule. As is shown in Attachment 1, these main roads connect 32 populated places and make a road network. It is worth pointing out that there are two possible situations for these drones. If the drone carries a cargo bay with medical packages in it, the drone must fly via five locations in need of medical assistance: Jajardo, San Pablo, San Juan, Bayamon and Arecibo, for the purpose of offloading its cargo. However, if the drone carries no cargo, any routes without deviation of the road network are allowed.
+
+\section{Symbols and definitions}
+\renewcommand\arraystretch{1.5}
+\begin{tabular}{ll}
+	\hline
+	Symbol&  Definition\\
+	\hline
+	$X$& The number of the containers $X$.\\
+	
+	$Y$& The number of the containers $Y$.\\
+	
+	$Z$& The number of the containers $Z$.\\
+	
+	$X_\alpha$& The number of the drones $\alpha$ packed in the container $X$.\\
+	
+	$Y_\alpha$& The number of the drones $\alpha$ packed in the container $Y$.\\
+	
+	$Z_\alpha$& The number of the drones $\alpha$ packed in the container $Z$.\\
+	
+	$X_{\alpha ij}$& The number of the MED $i$ transported by drone $\alpha$ from\\	 
+	& container $X$'s location to the demand location $j$, where $\alpha=A,\cdots,H$,\\ 
+	& $i=1,2,3$, $j=1,2,\cdots,5$.\\
+	
+	$Y_{\alpha ij}$& The number of the MED $i$ transported by drone $\alpha$ from \\
+	&container $Y$'s location to the demand location $j$, where $\alpha=A,\cdots,H$,\\
+	& $i=1,2,3$, $j=1,2,\cdots,5$.\\
+	
+	$Z_{\alpha ij}$& The number of the MED $i$ transported by drone $\alpha$ from \\
+	&container $Z$'s location to the demand location $j$, where $\alpha=A,\cdots,H$,\\ 
+	&$i=1,2,3$, $j=1,2,\cdots,5$.\\
+	
+	$c_i$& The cost of MED $i$, where $i=1,2,3$.\\
+	
+	$C_\alpha$& The cost of Drone $\alpha$, where $\alpha=A,B,\cdots,H$.\\
+	
+	 $W$& The cost of the container.\\
+	
+	 $V_\alpha$& The volume of the drone $\alpha$, where $\alpha=A,B,\cdots,H$.\\
+	
+	 $v_i$& The volume of the medical package $i$, where $i=1,2,3$.\\
+	
+	 $P_\alpha$& The max payload capability of the drone $\alpha$, where $\alpha=A,B,\cdots,H$.\\
+	
+	 $d$& The supporting days for the medical package demand of all 5 locations.\\
+	
+	 $M$& A sufficiently large number for big-$M$ method in integer programming.\\ 
+	\hline
+\end{tabular}
+
+
+\begin{tabular}{ll}
+	\hline
+	Symbol&  Definition\\
+	\hline	 
+	 $R$& A parameter indicating the significance of the video reconnaissance of\\
+	 & road networks compared to medical supply delivery. \\
+	 
+	 $l_\alpha$& The max flight distance of the drone $\alpha$.\\
+	 
+	 $T$& The number of the nodes in the network.\\
+	 
+	 $U_{Xm}$& $U_{Xm}=1$ if container $X$ is located at node $m$, where $m=1,2,\cdots,T$.\\ & Otherwise $U_{Xm}=0$.\\
+	 
+	 $U_{Ym}$& $U_{Ym}=1$ if container $Y$ is located at node $m$, where $m=1,2,\cdots,T$.\\ &Otherwise $U_{Ym}=0$.\\
+	 
+	 $U_{Xm}$& $U_{Zm}=1$ if container $Z$ is located at node $m$, where $m=1,2,\cdots,T$.\\ &Otherwise $U_{Zm}=0$.\\
+	 
+	$f(m,j)$& The length of the shortest path from node $m$ to node $j$.\\
+	\hline
+\end{tabular}
 
 \section{Model 1}
 \noindent $X$: The number of the containers $X$.
@@ -61,11 +148,11 @@ keyword1; keyword2
 
 \noindent $Z_\alpha$: The number of the drones $\alpha$ packed in the container $Z$.
 
-\noindent $X_{\alpha ij}$: The number of the medical packages $i$ transported by drone $\alpha$ from container $X$'s location to the demand location $j$, where $\alpha=A,B,\cdots,H$, $i=1,2,3$, $j=1,2\cdots,5$.
+\noindent $X_{\alpha ij}$: The number of the MED $i$ transported by drone $\alpha$ from container $X$'s location to the demand location $j$, where $\alpha=A,B,\cdots,H$, $i=1,2,3$, $j=1,2\cdots,5$.
 
-\noindent $Y_{\alpha ij}$: The number of the medical packages $i$ transported by drone $\alpha$ from container $Y$'s location to the demand location $j$, where $\alpha=A,B,\cdots,H$, $i=1,2,3$, $j=1,2\cdots,5$.
+\noindent $Y_{\alpha ij}$: The number of the MED $i$ transported by drone $\alpha$ from container $Y$'s location to the demand location $j$, where $\alpha=A,B,\cdots,H$, $i=1,2,3$, $j=1,2\cdots,5$.
 
-\noindent $Z_{\alpha ij}$: The number of the medical packages $i$ transported by drone $\alpha$ from container $Z$'s location to the demand location $j$, where $\alpha=A,B,\cdots,H$, $i=1,2,3$, $j=1,2\cdots,5$.
+\noindent $Z_{\alpha ij}$: The number of the MED $i$ transported by drone $\alpha$ from container $Z$'s location to the demand location $j$, where $\alpha=A,B,\cdots,H$, $i=1,2,3$, $j=1,2\cdots,5$.
 
 \noindent $c_i$: The cost of the medical package $i$, where $i=1,2,3$.
 
