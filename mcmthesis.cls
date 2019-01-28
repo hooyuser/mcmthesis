@@ -110,7 +110,7 @@
     \hypersetup{dvipdfm, hidelinks}
   \fi
 \fi
-\geometry{a4paper, margin = 1.2in}
+\geometry{a4paper, margin = 1in}
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\small\sffamily \team}
@@ -152,7 +152,7 @@
 \def\abstractname{Summary}
   \newbox\@abstract%
   \setbox\@abstract\hbox{}%
-  \long\def\abstract{\bgroup\global\setbox\@abstract\vbox\bgroup\hsize\textwidth\leftskip1cm\rightskip1cm}%
+  \long\def\abstract{\bgroup\global\setbox\@abstract\vbox\bgroup\hsize\textwidth\leftskip0.8cm\rightskip0.8cm}%
   \def\endabstract{\egroup\egroup}
   \def\make@abstract{%
     \begin{center}

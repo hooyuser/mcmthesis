@@ -259,6 +259,48 @@ X,Y,Z,X_\alpha,Y_\alpha,Z_\alpha,X_{\alpha ij},Y_{\alpha ij},Z_{\alpha ij} \text
 
 \section{Integrated model for double objectives}
 Now it is time to extend our analysis to the complete case that both medical supply delivery and video reconnaissance of road networks need to be carried out.
+
+\subsection{Road Network Detection}
+To decide the best locations of cargo containers and make a drone flight plan to realize video reconnaissance of road networks, we are supposed to add road network information to the model.     
+\begin{figure}[h]
+	\small
+	\centering
+	\includegraphics[width=15cm]{1.jpg}
+	\caption{Map of Puerto Rico} \label{fig:Map of Puerto Rico}
+\end{figure}\\
+Based on the following map (Figure 1) provided in Attachments, we use AutoCAD to extract the regional road network of Puerto Rico. The results of road network extraction are shown in Figure 2. 
+\begin{figure}[h]
+	\small
+	\centering
+	\includegraphics[width=15cm]{8.png}
+	\caption{Road Network} \label{fig:2}
+\end{figure}\\
+\subsubsection{Road Network Topology}
+For simplification, we use matrix to represent the topological structure of road network. As shown in the figure below, the simple road network can be represented as a four-dimensional matrix. 
+\begin{figure}[h]
+	\small
+	\centering
+	\includegraphics[width=10cm]{9.png}
+	\caption{Simple Road Network} \label{fig:4}
+\end{figure}
+\[
+\begin{pmatrix}
+{0} & {23.2 } & {43.04 }& {39.28 }  \\
+{23.2 } & {0 } & {27.92 } & {-1 } \\
+{43.04 } & {27.92  } & {0 } & {-1 } \\
+{39.28 } & {-1  } & {-1 } & {0 } \\
+\end{pmatrix} 
+\]
+Similarly, the actual road map shown below, can be expressed as a 32-dimensional matrix. Note that points 1 to 5 in the figure represent hospitals, and other points are mainly residential areas.
+\begin{figure}[h]
+	\small
+	\centering
+	\includegraphics[width=15cm]{6.png}
+	\caption{Actual Road Network} \label{fig:4}
+\end{figure}
+
+
+
 \subsection{Analysis and assumptions}
  Since the variable $d$ named supporting days has been shown to be a reasonable measure of the effect of medical supply delivery, developing some appropriate measures of the effect of video reconnaissance is our priority.
 
@@ -274,7 +316,7 @@ Besides the 9 variables
 \[
 X,Y,Z,X_{\alpha},Y_{\alpha},Z_{\alpha},X_{\alpha ij},Y_{\alpha ij},Z_{\alpha ij}
 \]
-considered in the integer programming model for single objective, We need additional variables to describe the location of the container $X$, $Y$, and $Z$, or more specifically, to describe to which node  every container should be sent given the network of roads.
+considered in the integer programming model for single objective, We need additional variables to describe the location of the container $X$, $Y$, and $Z$, or more specifically, to describe which node  every container should be sent to given the network of roads. Therefore, we resort to binary variables $U_{Xm}$
 
 \subsection{Formation}
 The objective function of this model is shown as follows:
@@ -311,6 +353,11 @@ Just by replacing the objective function yields the corresponding cost minimizat
 \end{aligned}
 \]
 while all constraints (1)-(39) must hold.
+
+\section{Modified model based on bin-packing algorithm}
+
+In this section we are to resolve a major defect in our previous models. We have been supposing that various items can be packed into a bin if the total volume of all items is not greater than the interior volume of the bin. However, simulation software  
+
 \subsection{Simulated Annealing Algorithm}
 \subsubsection{Background}
 Simulated annealing arithmetic was formed in the early 1980s. Its idea originated from the annealing process of solids, heating solids to a sufficiently high temperature and then cooling them slowly. When the temperature was raised, the internal energy of particles in solids became disordered and increased, while when the temperature was slowly cooled, the particles gradually became orderly. In theory, if the cooling process was slow enough, then either of them would be cooled. Solids can achieve thermal equilibrium at temperature, and when cooled to low temperature, they will reach the minimum state of internal energy at this low temperature. \\     
@@ -327,41 +374,6 @@ In this process, it is an important step to achieve thermal equilibrium at any c
 \end{itemize}
 The algorithm is essentially divided into two layers of cycles, generating new solutions at any temperature random disturbance, and calculating the change of the objective function value to determine whether it is accepted or not. Because the initial temperature of the algorithm is relatively high, the new solution of increasing E may also be accepted at the beginning, so it can jump out of the local minimum, and then by slowly lowering the temperature, the algorithm may eventually converge to the global optimal solution. It is also pointed out that although the acceptance function is very small at low temperature, the possibility of accepting worse solutions is still not excluded. Therefore, the best feasible solution (historical optimal solution) encountered in annealing process is generally recorded and output together with the last accepted solution before terminating the algorithm.
 
-
-
-\section{Introduction}
-
-\lipsum[2]
-\begin{itemize}
-\item minimizes the discomfort to the hands, or
-\item maximizes the outgoing velocity of the ball.
-\end{itemize}
-We focus exclusively on the second definition.
-
-\begin{itemize}
-\item the initial velocity and rotation of the ball,
-\item the initial velocity and rotation of the bat,
-\item the relative position and orientation of the bat and ball, and
-\item the force over time that the hitter hands applies on the handle.
-\end{itemize}
-\lipsum[3]
-\begin{itemize}
-\item the angular velocity of the bat,
-\item the velocity of the ball, and
-\item the position of impact along the bat.
-\end{itemize}
-\lipsum[4]
-\emph{center of percussion} [Brody 1986], \lipsum[5]
-
-\begin{Theorem} \label{thm:latex}
-\LaTeX
-\end{Theorem}
-\begin{Lemma} \label{thm:tex}
-\TeX .
-\end{Lemma}
-\begin{proof}
-The proof of theorem.
-\end{proof}
 
 
 
