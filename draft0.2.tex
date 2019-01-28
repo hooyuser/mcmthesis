@@ -50,6 +50,24 @@ keyword1; keyword2
 \tableofcontents
 \newpage
 
+\section{Introduction}
+\subsection{Problem Background}
+Natural disasters often bring huge casualties and economic losses on human society. In 2017, the worst hurricane in nearly a century landed in Puerto Rico, and left almost the entire island without power, and many without running water or cell phone service. Many highways and roads were blocked because of widespread flooding, which brought great difficulties to rescue route planning. Demand for medical supplies was also soaring for some time. \\
+
+\noindent HELP, Inc., one of non-governmental organizations, is planning to design a transportable disaster response system called DroneGo to conduct medical supply delivery and video reconnaissance.
+
+\subsection{Restatement of Problem}
+
+Our task is to design a DroneGo disaster response system to support potential future disaster scenario similar as the Puerto Rico hurricane. Based on the 2017 situation in Puerto Rico, we will: 
+
+\begin{itemize}
+	\item Provide the packing configuration for each of no more than three ISO cargo containers to transport the system.
+	\item Find the best locations on Puerto Rico to position these cargo containers to realize both medical supply delivery and video reconnaissance.
+	\item Design the drone payload packing configurations, delivery routes and schedule to conduct medical supply delivery, and a drone flight plan to realize video reconnaissance of road networks.
+\end{itemize}
+
+
+
 \section{General Assumptions}
 \textbf{Assumption I}: DroneGo disaster response system consists of up to three ISO cargo containers, a DroneGo fleet and some emergency medical packages. 
 
@@ -63,9 +81,9 @@ keyword1; keyword2
 
 \noindent Then both drones and medical packages will be taken out of the containers, and afterwards the latter will be packed into the drone cargo bay that is in fixed connection with the drone. 
 
-\noindent Finally, all drones will depart from the up to three container locations and fly along the main roads on schedule. As is shown in Attachment 1, these main roads connect 32 populated places and make a road network. It is worth pointing out that there are two possible situations for these drones. If the drone carries a cargo bay with medical packages in it, the drone must fly via five locations in need of medical assistance: Jajardo, San Pablo, San Juan, Bayamon and Arecibo, for the purpose of offloading its cargo. However, if the drone carries no cargo, any routes without deviation of the road network are allowed.
+\noindent Finally, all drones will depart from the up to three container locations and fly along the main roads on schedule. As is shown in Attachment 1, these main roads connect 32 populated places and make a road network. It is worth pointing out that there are two possible situations for these drones. If the drone carries a cargo bay with medical packages in it, the drone must fly via five locations in need of medical assistance, referred to as five destinations: Jajardo, San Pablo, San Juan, Bayamon and Arecibo, for the purpose of offloading its cargo. However, if the drone carries no cargo, any route without deviation of the road network is allowed.
 
-\section{Symbols and definitions}
+\section{Symbols and definitions}\label{section:Sym}
 \renewcommand\arraystretch{1.5}
 \begin{tabular}{ll}
 	\hline
@@ -136,45 +154,31 @@ keyword1; keyword2
 \end{tabular}
 
 \section{Model 1}
-\noindent $X$: The number of the containers $X$.
+The DroneGo disaster response system is sent to Puerto Rico for two major missons: medical supply delivery and video reconnaissance of road networks, none of which is dispensable. Nevertheless, to start with, focusing on the former solely helps attain a clear insight into this sophisticated problem. That leads to our integer programming model.
 
-\noindent $Y$: The number of the containers $Y$.
+\noindent Now assume that the response system are only for medical supply delivery and that the location of each container is so close to its destination that each drone can reach it before the power supply runs out. According to the requirement, the response system must meet the daily medical package demand of the five selected locations in Puerto Rico. Therefore, a natural objective is to maximize the so-called supporting days $d$. Suppose that the amount of the medical packages provided by the Drone fleet can serve location $j$ $(j=1,2,\cdots,5)$ for $d_j$ days. Then the supporting days is defined as
+\begin{equation}
+	d=\min\{d_1,d_2,d_3,d_4,d_5\}.
+\end{equation}
+For the sake of the optimization of $d$, a lot of independent variables need to be specified appropriately. Firstly, we need to specify the number of the containers transported to the disaster area. We introduce binary variables $X$, $Y$, $Z$ to indicate whether the corresponding cargo container is utilized respectively. Secondly, we have to decide the packing configuration for each container in use. Given the definition of $X_\alpha$ and $X_{\alpha ij}$ in section \ref{section:Sym}, the number of each item to be packed into container $X$ (8 types of drones: Drone A to Drone H; 3 types of medical packages: MED1, MED2, MED3) can be expressed as
+ 
+\begin{equation*}
+	X_A,\cdots,X_H,\sum_{\alpha=A}^H\sum_{j=1}^{5}X_{\alpha 1j},\sum_{\alpha=A}^H\sum_{j=1}^{5}X_{\alpha 2j},\sum_{\alpha=A}^H\sum_{j=1}^{5}X_{\alpha 3j}
+\end{equation*} 
+respectively. Likewise, we can choose values for $Y_\alpha,Y_{\alpha ij}$ and $Z_{\alpha},Z_{\alpha ij}$ to give the packing configuration for the container $Y$ and the container $Z$ respectively. Thirdly, we have to decide the drone payload packing configurations, or alternatively how the medical packages are packed into the drone cargo bay. The number of each type of medical package to be packed into the drone $\alpha$ can be expressed as
+\begin{equation*}
+\sum_{j=1}^{5}X_{\alpha 1j},\sum_{j=1}^{5}X_{\alpha 2j},\sum_{j=1}^{5}X_{\alpha 3j}
+\end{equation*} Finally, the destination of each drone should be given. That is exactly what the variables $X_{\alpha ij},Y_{\alpha ij},Z_{\alpha ij}$ indicate. In a word, we need to adjust the 9 variables
+\[
+X,Y,Z,X_{\alpha},Y_{\alpha},Z_{\alpha},X_{\alpha ij},Y_{\alpha ij},Z_{\alpha ij}
+\]
+for the maximization of $d$.
 
-\noindent $Z$: The number of the containers $Z$.
+\noindent By imposing proper constraints we obtain the following integer programming problem
 
-\noindent $X_\alpha$: The number of the drones $\alpha$ packed in the container $X$.
-
-\noindent $Y_\alpha$: The number of the drones $\alpha$ packed in the container $Y$.
-
-\noindent $Z_\alpha$: The number of the drones $\alpha$ packed in the container $Z$.
-
-\noindent $X_{\alpha ij}$: The number of the MED $i$ transported by drone $\alpha$ from container $X$'s location to the demand location $j$, where $\alpha=A,B,\cdots,H$, $i=1,2,3$, $j=1,2\cdots,5$.
-
-\noindent $Y_{\alpha ij}$: The number of the MED $i$ transported by drone $\alpha$ from container $Y$'s location to the demand location $j$, where $\alpha=A,B,\cdots,H$, $i=1,2,3$, $j=1,2\cdots,5$.
-
-\noindent $Z_{\alpha ij}$: The number of the MED $i$ transported by drone $\alpha$ from container $Z$'s location to the demand location $j$, where $\alpha=A,B,\cdots,H$, $i=1,2,3$, $j=1,2\cdots,5$.
-
-\noindent $c_i$: The cost of the medical package $i$, where $i=1,2,3$.
-
-\noindent $C_\alpha$: The cost of the drone $\alpha$, where $\alpha=A,B,\cdots,H$.
-
-\noindent $W$: The cost of the container.
-
-\noindent $V_\alpha$: The volume of the drone $\alpha$, where $\alpha=A,B,\cdots,H$.
-
-\noindent $v_i$: The volume of the medical package $i$, where $i=1,2,3$.
-
-\noindent $P_\alpha$: The max payload capability of the drone $\alpha$, where $\alpha=A,B,\cdots,H$.
-
-\noindent $d$: The supporting days for the medical package demand of all 5 locations.
-
-\noindent $M$: A sufficiently large number for big-$M$ method in integer programming. 
 \[
 \begin{aligned}
-&\min\quad\sum_{\alpha=A}^{H}\sum_{i=1}^{3}\sum_{j=1}^{5}c_{i}\left(X_{\alpha ij}+Y_{\alpha ij}+Z_{\alpha ij}\right)
-+\sum_{\alpha=A}^{H}C_{{\alpha}}\left(X_{\alpha}+Y_{\alpha }+Z_{\alpha }\right)+W(X+Y+Z)\\
-&\text{or}\\
-&\max\quad d
+\max\quad d
 \end{aligned}
 \]
 \[
@@ -229,30 +233,23 @@ X,Y,Z,X_\alpha,Y_\alpha,Z_\alpha,X_{\alpha ij},Y_{\alpha ij},Z_{\alpha ij} \text
 \end{aligned}
 \]
 
-
+\noindent If we take the cost of containers, drones and medical packages into consideration and fix the value of $d$, minimizing the total cost also makes sense. To address the minimization problem, we only need to transform the objective function into the following form while all original constraints (1)-(32) still hold:
+\[
+\begin{aligned}
+&\min\quad\sum_{\alpha=A}^{H}\sum_{i=1}^{3}\sum_{j=1}^{5}c_{i}\left(X_{\alpha ij}+Y_{\alpha ij}+Z_{\alpha ij}\right)
++\sum_{\alpha=A}^{H}C_{{\alpha}}\left(X_{\alpha}+Y_{\alpha }+Z_{\alpha }\right)+W(X+Y+Z).
+\end{aligned}
+\]
 
 
 \section{Model 2}
 
-\noindent $R$: A parameter indicating the significance of the video reconnaissance of road networks compared to medical supply delivery. 
+Now it is time to extend our analysis to the complete case that both medical supply delivery and video reconnaissance of road networks need to be carried out. Since the variable $d$ named supporting days has been shown to be a reasonable measure of the effect of medical supply delivery, developing some appropriate measures of the effect of video reconnaissance is our priority.
 
-\noindent $l_\alpha$: The max flight distance of the drone $\alpha$.
-
-\noindent $T$: The number of the nodes in the network.
-
-\noindent $U_{Xm}$: $U_{Xm}=1$ if container $X$ is located at node $m$, where $m=1,2,\cdots,T$. Otherwise $U_{Xm}=0$.
-
-\noindent $U_{Ym}$: $U_{Ym}=1$ if container $Y$ is located at node $m$, where $m=1,2,\cdots,T$. Otherwise $U_{Ym}=0$.
-
-\noindent $U_{Xm}$: $U_{Zm}=1$ if container $Z$ is located at node $m$, where $m=1,2,\cdots,T$. Otherwise $U_{Zm}=0$.
-
-\noindent $f(m,j)$: The length of the shortest path from node $m$ to node $j$.
-
+\noindent Assume that drones cannot be recharged, which implies each drone will fly along the road network until its batter is discharged. When the number of drones is rather large, it is totally reasonable to assume that under no circumstances will any two drones fly abreast along a same road. Thus the sum of flight distances of all the drones can well measure the effect of video reconnaissance.
 \[
 \begin{aligned}
-\min\quad&\sum_{\alpha=A}^{H}\sum_{i=1}^{3}\sum_{j=1}^{5}c_{i}\left(X_{\alpha ij}+Y_{\alpha ij}+Z_{\alpha ij}\right)
-+\sum_{\alpha=A}^{H}C_{{\alpha}}\left(X_{\alpha}+Y_{\alpha }+Z_{\alpha }\right)+W(X+Y+Z)\\
-&-R\sum_{\substack{\alpha=A\\ \alpha\ne F}}^{G}l_\alpha (X_\alpha+Y_\alpha+Z_\alpha)
+\max\quad d+R\sum_{\substack{\alpha=A\\ \alpha\ne F}}^{G}l_\alpha (X_\alpha+Y_\alpha+Z_\alpha)
 \end{aligned}
 \]
 Additional constraints:
@@ -272,6 +269,16 @@ U_{Xm},U_{Ym},U_{Zm} \in \{0,1\}
 \right.
 \end{aligned}
 \]
+
+
+\[
+\begin{aligned}
+\min\quad&\sum_{\alpha=A}^{H}\sum_{i=1}^{3}\sum_{j=1}^{5}c_{i}\left(X_{\alpha ij}+Y_{\alpha ij}+Z_{\alpha ij}\right)
++\sum_{\alpha=A}^{H}C_{{\alpha}}\left(X_{\alpha}+Y_{\alpha }+Z_{\alpha }\right)+W(X+Y+Z)\\
+&-R\sum_{\substack{\alpha=A\\ \alpha\ne F}}^{G}l_\alpha (X_\alpha+Y_\alpha+Z_\alpha)
+\end{aligned}
+\]
+
 
 \section{Introduction}
 
@@ -307,16 +314,9 @@ We focus exclusively on the second definition.
 The proof of theorem.
 \end{proof}
 
-\subsection{Other Assumptions}
-\lipsum[6]
-\begin{itemize}
-\item
-\item
-\item
-\item
-\end{itemize}
 
-\lipsum[7]
+
+
 
 \section{Analysis of the Problem}
 \begin{figure}[h]
@@ -326,7 +326,7 @@ The proof of theorem.
 \caption{aa} \label{fig:aa}
 \end{figure}
 
-\lipsum[8] \eqref{aa}
+ \eqref{aa}
 \begin{equation}
 a^2 \label{aa}
 \end{equation}
@@ -339,15 +339,15 @@ a^2 \label{aa}
   \end{pmatrix}
   = \frac{{Opposite}}{{Hypotenuse}}\cos ^{ - 1} \theta \arcsin \theta
 \]
-\lipsum[9]
 
+00
 \[
   p_{j}=\begin{cases} 0,&\text{if $j$ is odd}\\
   r!\,(-1)^{j/2},&\text{if $j$ is even}
   \end{cases}
 \]
 
-\lipsum[10]
+
 
 \[
   \arcsin \theta  =

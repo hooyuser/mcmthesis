@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.3.25)  27 JAN 2019 18:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.3.25)  28 JAN 2019 12:24
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -703,6 +703,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [1]
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 54.
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 64.
+(c:/texlive/2016/texmf-dist/tex/latex/psnfss/omsppl.fd
+File: omsppl.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 64.
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -710,10 +724,6 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2]
-Overfull \hbox (3.54686pt too wide) in paragraph at lines 117--137
-[][] 
- []
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -721,6 +731,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [3]
+Overfull \hbox (3.54686pt too wide) in paragraph at lines 135--155
+[][] 
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -749,18 +763,6 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [7]
-Overfull \hbox (32.5379pt too wide) detected at line 274
-[][]
- []
-
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 280.
-
-(c:/texlive/2016/texmf-dist/tex/latex/psnfss/omsppl.fd
-File: omsppl.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 280.
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -768,8 +770,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [8]
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 310.
+Overfull \hbox (32.5379pt too wide) detected at line 271
+[][]
+ []
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -790,7 +793,7 @@ df>
 (epstopdf)             \includegraphics on input line 325.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/mcmthesis-aaa-eps-converted-to.pdf, id=161, 421.575pt x 317.185pt>
+<./figures/mcmthesis-aaa-eps-converted-to.pdf, id=170, 421.575pt x 317.185pt>
 File: ./figures/mcmthesis-aaa-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figures/mcmthesis-aaa-eps-converted-to.pdf>
@@ -871,16 +874,16 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 420.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 420.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 420.
 Package rerunfilecheck Info: File `draft0.2.out' has not changed.
-(rerunfilecheck)             Checksum: A343B93B70856C0561DD23EB5C8041A6;975.
+(rerunfilecheck)             Checksum: F3966952A5B6E4BD9BD7E1D20B050235;1095.
  ) 
 Here is how much of TeX's memory you used:
- 11413 strings out of 493013
- 157188 string characters out of 6136993
- 426371 words of memory out of 5000000
- 14571 multiletter control sequences out of 15000+600000
+ 11419 strings out of 493013
+ 157265 string characters out of 6136993
+ 426438 words of memory out of 5000000
+ 14574 multiletter control sequences out of 15000+600000
  48088 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,16n,100p,886b,1962s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 47i,16n,100p,886b,1961s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2016/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2016/texmf-dist/fonts/type1
@@ -894,10 +897,10 @@ w/helvetic/uhvb8a.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr
 8a.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texl
 ive/2016/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2016/texmf-
 dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on draft0.2.pdf (16 pages, 272493 bytes).
+Output written on draft0.2.pdf (16 pages, 273404 bytes).
 PDF statistics:
- 331 PDF objects out of 1000 (max. 8388607)
- 294 compressed objects within 3 object streams
- 96 named destinations out of 1000 (max. 500000)
- 150 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 345 PDF objects out of 1000 (max. 8388607)
+ 307 compressed objects within 4 object streams
+ 99 named destinations out of 1000 (max. 500000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
