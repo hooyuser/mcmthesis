@@ -41,7 +41,7 @@
 \geometry{a4paper,left=2.6cm,right=2.6cm,top=3cm,bottom=3cm}
 \begin{document}
 \begin{abstract}
-This article gives an modified integer programming model based on a combination of traditional branch-and-bound method and simulated annealing bin-packing algorithm. It aims at addressing the complicated resource allocation problem, which naturally occurs in designing disaster relief response system, step by step from the perspective of a overall and comprehensive analysis of the interaction within a complex system. 
+This article gives a modified integer programming model based on a combination of traditional branch-and-bound method and simulated annealing bin-packing algorithm. It aims at addressing the complicated resource allocation problem, which naturally occurs in designing disaster relief response system, step by step from the perspective of a overall and comprehensive analysis of the interaction within a complex system. 
 
 The DroneGo disaster response system is dispatched to Puerto Rico for two major missons: medical supply delivery and video reconnaissance of road networks, none of which is dispensable. Since focusing on the former solely helps attain a clear insight into this sophisticated problem, we first construct an integer programming model as a basis to be perfected gradually. This model is capable of deciding the cargo container packing configuration, the drone payload packing configurations and the destination of each drones for the demand of the five selected location. Then we extend our analysis to an integrated model for double objectives. In order to specify the appropriate locations of containers and the schedule of drone fleet, we abstract a network from the real map first with the help of geographic information technology. Then we implement the Dijkstra's algorithm to solve for the shortest path as a preparation for drone route planning. Finally we manage to connect our integer programming model with a comlpex network and make a complete model which can solves all the variables which is necessary to establish the DroneGo disaster response system. 
 
@@ -87,7 +87,7 @@ Our task is to design a DroneGo disaster response system to support potential fu
 
 \noindent Finally, all drones will depart from the up to three container locations and fly along the main roads on schedule. As is shown in Attachment 1, these main roads connect 32 populated places and make a road network. It is worth pointing out that there are two possible situations for these drones. If the drone carries a cargo bay with medical packages in it, the drone must fly via at least one of five locations in need of medical assistance, referred to as five medical nodes: Jajardo, San Pablo, San Juan, Bayamon and Arecibo, for the purpose of offloading its cargo. However, if the drone carries no cargo, any route without deviation of the road network is allowed.
 
-\noindent\textbf{Assumption III}: To capture the essence of the problem and get rid of unnecessary  complexity, some simplifications have been made. We assume that each drone can deliver medical supplies to at most one location demanding assistance. If two drones from the same container have the same types, they also have the same payload packing configuration.
+\noindent\textbf{Assumption III}: To capture the essence of the problem and get rid of unnecessary complexity, some simplifications have been made. We assume that each drone can deliver medical supplies to at most one location demanding assistance. If two drones from the same container have the same types, they also have the same payload packing configuration.
 
 \section{Symbols and definitions}\label{section:Sym}
 \renewcommand\arraystretch{1.5}
@@ -107,33 +107,10 @@ Our task is to design a DroneGo disaster response system to support potential fu
 	
 	$Z_\alpha$& The number of the drones $\alpha$ packed in the container $Z$.\\
 	
-	$X_{\alpha ij}$& The number of the MED $i$ transported by drone $\alpha$ from\\	 
-	& container $X$'s location to the demand location $j$, where $\alpha=A,\cdots,H$,\\ 
-	& $i=1,2,3$, $j=1,2,\cdots,5$.\\
+
 	
-	$Y_{\alpha ij}$& The number of the MED $i$ transported by drone $\alpha$ from \\
-	&container $Y$'s location to the demand location $j$, where $\alpha=A,\cdots,H$,\\
-	& $i=1,2,3$, $j=1,2,\cdots,5$.\\
 	
-	$Z_{\alpha ij}$& The number of the MED $i$ transported by drone $\alpha$ from \\
-	&container $Z$'s location to the demand location $j$, where $\alpha=A,\cdots,H$,\\ 
-	&$i=1,2,3$, $j=1,2,\cdots,5$.\\
-	
-	$c_i$& The cost of MED $i$, where $i=1,2,3$.\\
-	
-	$C_\alpha$& The cost of Drone $\alpha$, where $\alpha=A,B,\cdots,H$.\\
-	
-	 $W$& The cost of the container.\\
-	
-	 $V_\alpha$& The volume of the drone $\alpha$, where $\alpha=A,B,\cdots,H$.\\
-	
-	 $v_i$& The volume of the medical package $i$, where $i=1,2,3$.\\
-	
-	 $P_\alpha$& The max payload capability of the drone $\alpha$, where $\alpha=A,B,\cdots,H$.\\
-	
-	 $d$& The supporting days for the medical package demand of all 5 locations.\\
-	
-	 $M$& A sufficiently large number for big-$M$ method in integer programming.\\ 
+ 
 	\hline
 \end{tabular}
 
@@ -142,12 +119,38 @@ Our task is to design a DroneGo disaster response system to support potential fu
 	\hline
 	Symbol&  Definition\\
 	\hline	 
+		$X_{\alpha ij}$& The number of the MED $i$ transported by drone $\alpha$ from\\	 
+	& container $X$'s location to the demand location $j$, where $\alpha=A,\cdots,H$,\\ 
+	& $i=1,2,3$, $j=1,2,\cdots,5$.\\
+	
+	$Y_{\alpha ij}$& The number of the MED $i$ transported by drone $\alpha$ from \\
+	&container $Y$'s location to the demand location $j$, where $\alpha=A,\cdots,H$,\\
+	& $i=1,2,3$, $j=1,2,\cdots,5$.\\
+	$Z_{\alpha ij}$& The number of the MED $i$ transported by drone $\alpha$ from \\
+	&container $Z$'s location to the demand location $j$, where $\alpha=A,\cdots,H$,\\ 
+	&$i=1,2,3$, $j=1,2,\cdots,5$.\\
+	
+		$c_i$& The cost of MED $i$, where $i=1,2,3$.\\
+	
+	$C_\alpha$& The cost of Drone $\alpha$, where $\alpha=A,B,\cdots,H$.\\
+	
+	$W$& The cost of the container.\\
+	
+	$V_\alpha$& The volume of the drone $\alpha$, where $\alpha=A,B,\cdots,H$.\\
+	
+	$v_i$& The volume of the medical package $i$, where $i=1,2,3$.\\
+	
+	$P_\alpha$& The max payload capability of the drone $\alpha$, where $\alpha=A,B,\cdots,H$.\\
+	
+	$d$& The supporting days for the medical package demand of all 5 locations.\\
+	
+	$M$& A sufficiently large number for big-$M$ method in integer programming.\\
 	 $\lambda$& A parameter indicating the significance of the video reconnaissance of\\
 	 & road networks compared to medical supply delivery. \\
 	 
 	 $l_\alpha$& The max flight distance of the drone $\alpha$.\\
 	 
-	 $L$& The total flight distance \\
+	 $Q$& The total flight distance \\
 	 
 	 $T$& The number of the nodes in the network of roads.\\
 	 
@@ -158,6 +161,31 @@ Our task is to design a DroneGo disaster response system to support potential fu
 	 $U_{Xm}$& $U_{Zm}=1$ if container $Z$ is located at node $m$, where $m=1,2,\cdots,T$.\\ &Otherwise $U_{Zm}=0$.\\
 	 
 	$f(m,j)$& The length of the shortest path from node $m$ to node $j$.\\
+	\hline
+\end{tabular}
+
+\begin{tabular}{ll}
+	\hline
+	Symbol&  Definition\\
+	\hline	 
+	$L$& The length of the bin \\
+	$W$& The width of the bin \\
+	$H$& The Height of the bin of the bin \\
+	
+	$x_i$& LBB coordinate of item $i$ in $x$ axis\\
+	$y_i$& LBB coordinate of item $i$ in $y$ axis\\
+	$z_i$& LBB coordinate of item $i$ in $z$ axis\\
+	
+	$s_{ij}$& item is in the left side of item or not \\
+	$u_{ij}$& item $i$  is under item $j$ or not \\
+	$b_{ij}$& item $i$  is in the back of  item $j$ or not \\
+	
+	$\delta_{i1}$& orientation of item $i$ is front-up or not \\
+	$\delta_{i2}$& orientation of item $i$ is front-down or not \\
+	$\delta_{i3}$& orientation of item $i$ is side-up or not \\
+	$\delta_{i4}$& orientation of item $i$ is side-down or not \\
+	$\delta_{i5}$& orientation of item $i$ is buttom-up or not \\
+	$\delta_{i6}$& orientation of item $i$ is buttom-down or not \\
 	\hline
 \end{tabular}
 
@@ -183,7 +211,10 @@ respectively. Likewise, we can choose values for $Y_\alpha,Y_{\alpha ij}$ and $Z
 
 \noindent In a word, we need to adjust the 387 variables
 \[
-X,Y,Z,X_{\alpha},Y_{\alpha},Z_{\alpha},X_{\alpha ij},Y_{\alpha ij},Z_{\alpha ij}\quad(\alpha=A,\cdots,H;i=1,2,3;j=1,\cdots,5)
+X,Y,Z,X_{\alpha},Y_{\alpha},Z_{\alpha},X_{\alpha ij},Y_{\alpha ij},Z_{\alpha ij}
+\]
+\[
+\quad(\alpha=A,\cdots,H;i=1,2,3;j=1,\cdots,5)
 \]
 for the maximization of $d$.
 
@@ -308,14 +339,14 @@ Similarly, the actual road map shown below, can be expressed as a 32-dimensional
 	\caption{Actual Road Network} \label{fig:4}
 \end{figure}
 
-
+Then we implement the Dijkstra's algorithm to solve for the shortest path $f(m,j)$ as a preparation for later drone route planning. 
 
 \subsection{Analysis and assumptions}
  Since the variable $d$ named supporting days has been shown to be a reasonable measure of the effect of medical supply delivery, developing some appropriate measures of the effect of video reconnaissance is our priority.
 
 \noindent Assume that drones cannot be recharged, which implies each drone will fly along the road network until its batter is discharged. Another assumption is the max flight distance of the drone is unrelated to the weight of its carrying cargo. When the number of drones is rather large, it is totally reasonable to assume that under no circumstances will any two drones fly abreast along a same road. Thus the sum of flight distances of all the drones can well measure the effect of video reconnaissance. Note that Drone F is not capable of recording video. We can deduce the total flight distance
 \[
-L=\sum_{\substack{\alpha=A\\ \alpha\ne F}}^{G}l_\alpha (X_\alpha+Y_\alpha+Z_\alpha).
+Q=\sum_{\substack{\alpha=A\\ \alpha\ne F}}^{G}l_\alpha (X_\alpha+Y_\alpha+Z_\alpha).
 \]
 There are several methods of multiobjective optimization. Here we choose a simple linear weighing method in order to obtain a integer programming model. Let $\lambda$ be the weight indicating the significance of the video reconnaissance of road networks compared to medical supply delivery. Then we need to manipulate variables to maximize the weighted measure
 \[
@@ -379,22 +410,45 @@ while all constraints (1)-(39) must hold.
 
 \section{Modified model based on bin-packing algorithm}
 
-In this section we are to resolve a major defect in our previous models. We have been supposing that various items can be packed into a bin if the total volume of all items is not greater than the interior volume of the bin. However, 3D bin-packing simulation software illustrates that in most cases cuboid goods can only occupy 70\%-90\% of the interior space of the bin. Thus our modified model based on advanced 3D bin-packing algorithm is brought forward to reduce the inaccuracy caused by simple volume constraints in integer programming.
+In this section we are to resolve a major defect in our previous models. We have been supposing that various items can be packed into a bin if the total volume of all items is not greater than the interior volume of the bin. However, 3D bin-packing simulation software illustrates that in most cases cuboid goods can only occupy 70\%-90\% of the interior space of the bin. Thus our modified model based on advanced 3D bin-packing algorithm is brought forward to reduce the inaccuracy caused by the rough volume constraints in integer programming.
 
-%\subsection{Integer programming bin-packing algorithm}
-%$s _ { i j } + u _ { i j } + b _ { i j } = 1 \)
-%\( \delta _ { i 1 } + \delta _ { i 2 } + \delta _ { i 3 } + \delta _ { i 4 } + \delta _ { i 5 } + \delta _ { i 6 } = 1 \)
-%\( x _ { i } - x _ { j } + L \cdot s _ { i j } \leq L - \hat { l } _ { i } \)
-%\( y _ { i } - y _ { j } + W \cdot u _ { i j } \leq W - \hat { w } _ { i }$
-%$0 \leq x _ { i } \leq L - \hat { l } _ { i } \)
-%\( 0 \leq y _ { i } \leq W - \hat { w } _ { i } \)
-%\( 0 \leq z _ { i } \leq H - \hat { h } _ { i } \)
-%\( \hat { l } _ { i } = \delta _ { i 1 } l _ { i } + \delta _ { i 2 } l _ { i } + \delta _ { i 3 } l _ { i } + \delta _ { i 4 } w _ { i } + \delta _ { i 5 } l _ { i } + \delta _ { i 6 } h _ { i } \)
-%\( \hat { w } _ { i } = \delta _ { i 1 } w _ { i } + \delta _ { i 2 } h _ { i } + \delta _ { i 3 } l _ { i } + \delta _ { i 4 } l _ { i } + \delta _ { i 5 } l _ { i } + \delta _ { i 6 } l _ { i } \)
-%\( \hat { h } _ { i } = \delta _ { i 1 } h _ { i } + \delta _ { i 2 } w _ { i } + \delta _ { i 3 } h _ { i } + \delta _ { i 4 } l _ { i } + \delta _ { i 5 } w _ { i } + \delta _ { i 6 } l _ { i }$
-%$s _ { i j } , u _ { i j } , b _ { i j } \in \{ 0,1 \} \)
-%\( \delta _ { i 1 } , \delta _ { i 2 } , \delta _ { i 3 } , \delta _ { i 4 } , \delta _ { i 5 } , \delta _ { i 6 } \in \{ 0,1 \}$
-\subsection{Simulated annealing bin-packing algorithm}
+
+\subsection{Unpractical integer programming bin-packing algorithm}
+It seems to be a natural choice of insisting on the integer programming method to dealing with the bin-packing problem as before. And such method exists indeed.
+
+\noindent In a typical 3D bin-packing problem, a set of items must be packaged in a designated box in a way that minimizes the number of boxes used. Our goal is to find a box with the smallest surface area that can hold all the items. We define $( x_i, y_i , z_i )$ as the left-bottom-back (LBB) coordinate of item $i$ and define $(0, 0, 0)$ as the left-bottom-back coordinate of the bin. Based on the description of problems and symbols, the mathematical formulas of the new three-dimensional bin-packing problem are given as follows: 
+\[
+\min L
+\]
+\[
+\begin{aligned}
+\text{s.t.}&
+\left\{
+\begin{array}{lr}
+s _ { i j } + u _ { i j } + b _ { i j } = 1 &(40)\\
+\delta _ { i 1 } + \delta _ { i 2 } + \delta _ { i 3 } + \delta _ { i 4 } + \delta _ { i 5 } + \delta _ { i 6 } = 1&(41)\\
+x _ { i } - x _ { j } + L \cdot s _ { i j } \leq L - \hat { l } _ { i } &(42)\\
+y _ { i } - y _ { j } + W \cdot u _ { i j } \leq W - \hat { w } _ { i }&(43)\\
+z _ { i } - z _ { j } + H \cdot b _ { i j } \leq H - \hat { h } _ { i }&(44)\\
+0 \leq x _ { i } \leq L - \hat { l } _ { i }&(45)\\
+0 \leq y _ { i } \leq W - \hat { w } _ { i }&(46)\\
+0 \leq z _ { i } \leq H - \hat { h } _ { i } &(47)\\
+\hat { l } _ { i } = \delta _ { i 1 } l _ { i } + \delta _ { i 2 } l _ { i } + \delta _ { i 3 } l _ { i } + \delta _ { i 4 } w _ { i } + \delta _ { i 5 } l _ { i } + \delta _ { i 6 } h _ { i } &(48)\\
+ \hat { w } _ { i } = \delta _ { i 1 } w _ { i } + \delta _ { i 2 } h _ { i } + \delta _ { i 3 } l _ { i } + \delta _ { i 4 } l _ { i } + \delta _ { i 5 } l _ { i } + \delta _ { i 6 } l _ { i } &(49)\\
+\hat { h } _ { i } = \delta _ { i 1 } h _ { i } + \delta _ { i 2 } w _ { i } + \delta _ { i 3 } h _ { i } + \delta _ { i 4 } l _ { i } + \delta _ { i 5 } w _ { i } + \delta _ { i 6 } l _ { i } &(50)\\
+s _ { i j } , u _ { i j } , b _ { i j } \in \{ 0,1 \} &(51)\\
+ \delta _ { i 1 } , \delta _ { i 2 } , \delta _ { i 3 } , \delta _ { i 4 } , \delta _ { i 5 } , \delta _ { i 6 } \in \{ 0,1 \}&(52)
+\end{array}
+\right.
+\end{aligned}
+\]
+
+\noindent Constraints (48), (49), (50) denote the length, width and height of Item $i$ after orientation. Constraints (40), (41), (42), (43) are used to ensure that there is no overlap between the two packages, while constraints (45), (46), (47) are used to ensure that the goods will not be placed outside the warehouse. 
+
+\noindent Unfortuanately it is very difficult to solve in reasonable time limit and this problem has beeb proved to be NP-hard. Thus we need to develop a more effective to solve the bin-packing problem.  
+
+
+\subsection{Effective Simulated annealing bin-packing algorithm}
 \subsubsection{Background}
 Simulated annealing arithmetic was formed in the early 1980s. Its idea originated from the annealing process of solids, heating solids to a sufficiently high temperature and then cooling them slowly. When the temperature was raised, the internal energy of particles in solids became disordered and increased, while when the temperature was slowly cooled, the particles gradually became orderly. In theory, if the cooling process was slow enough, then either of them would be cooled. Solids can achieve thermal equilibrium at temperature, and when cooled to low temperature, they will reach the minimum state of internal energy at this low temperature.      
 
@@ -465,36 +519,61 @@ A common and efficient algorithm for integer programming is branch-and-bound met
 
 \noindent After the simulated annealing bin-packing algorithm is involved, we find the optimal solution in normal integer programming was overwhelmingly large than the actual situation. 
 
-\section{The Model Results}
-\lipsum[6]
+\section{Results and sensitivity analysis}
+The result of the modified model depends on the parameter $\lambda$ which indicates the significance of the video reconnaissance of
+road networks compared to medical supply delivery.
+\begin{itemize}
+	\item $\lambda=1$\\
+	~\\
+	\begin{tabular}{llllllllllllllll}
+		\hline	
+		Cargo Containers&  MED1 & MED2 & MED3 & A & B & C & D & E & F & G & H \\
+		\hline	 
+		X & 606 & & &2 &9 & 7 & 10 & 8 & 2 &9 & 1\\  
+		Y & 1818 & 1212 & 1212 &1 &4 & 3 & 20 & 20 & 5 &15 & 1\\    
+		Z & 1818 &  & 1212 &2 &8 & 5 & 8 & 5 & 2 &7 & 1\\ 
+		\hline
+	\end{tabular}
+	\item $\lambda=2$\\
+	\begin{tabular}{llllllllllllllll}
+		\hline	
+		Cargo Containers&  MED1 & MED2 & MED3 & A & B & C & D & E & F & G & H \\
+		\hline	 
+		X & 569 & & &2 &8 & 5 & 9 & 9 & 3 &7 & 2\\  
+		Y & 1680 & 811 & 792 &1 &3 & 4 & 12 & 18 & 10 &13 & 1\\    
+		Z & 1918 &  & 1173 &1 &7 & 6 & 8 & 4 & 4 &4 & 1\\ 
+		\hline
+	\end{tabular}
+	\item $\lambda=5$\\
+	~\\
+	\begin{tabular}{llllllllllllllll}
+	\hline	
+	Cargo Containers&  MED1 & MED2 & MED3 & A & B & C & D & E & F & G & H \\
+	\hline	 
+	X & 269 &223 & &4 &9 & 12 & 13 & 3 & 6 &19 & 1\\  
+	Y & 1080 &  & 92 &5 &14 & 1 & 23 & 10 & 5 &18 & 6\\    
+	Z & 918 &  & 1173 &2 &12 & 7 & 8 & 15 & 4 &4 & 3\\ 
+	\hline
+\end{tabular}
+\end{itemize}
+The variations of the result is not considerable if $\lambda$ changes a little. As we can expect, the demanding medical packages are reducing when $\lambda$ rises.
 
-\section{Validating the Model}
-\lipsum[9]
-
-\section{Conclusions}
-\lipsum[6]
-
-\section{A Summary}
-\lipsum[6]
-
-\section{Evaluate of the Model}
 
 \section{Strengths and weaknesses}
-\lipsum[12]
-
 \subsection{Strengths}
 \begin{itemize}
-\item \textbf{Applies widely}\\
-This  system can be used for many types of airplanes, and it also
-solves the interference during  the procedure of the boarding
-airplane,as described above we can get to the  optimization
-boarding time.We also know that all the service is automate.
-\item \textbf{Improve the quality of the airport service}\\
-Balancing the cost of the cost and the benefit, it will bring in
-more convenient  for airport and passengers.It also saves many
-human resources for the airline. \item \textbf{}
+\item \textbf{Overall planning}\\
+Our planning treats the DroneGo disaster response system as a unit, as an organic whole. All variables that interacts with each other are decided simultaneously in a complete and comprehensive framework.
+\item \textbf{Universality}\\
+The model we have put forward not only works well for developing an aerial disaster relief response system, but also fits a number of analogous scenarios.
+\end{itemize}
+\subsection{Weaknesses}
+\begin{itemize}
+	\item We assume that each drone can deliver medical supplies to at most one location demanding assistance and that if two drones from the same container have the same types, they also have the same payload packing configuration. By relaxing these limitations, it is possible to design an intricate flight schedule to reach a more optimized solution.
+	
 \end{itemize}
 
+\newpage 
 \section*{Memo}
 \addcontentsline{toc}{section}{Memo}
 $\mathbf{To:}$ Chief Operating Officer \\
@@ -506,45 +585,69 @@ $\mathbf{Subject:}$ Suggestions for DroneGo Disaster Response System\\
 
 \noindent$\mathbf{Modeling}\ \mathbf{Results:}$
 \begin{itemize}
-	\item 
-	\item 
+	\item The model results are shown in the following table.\\
+	\begin{tabular}{llllllllllllllll}
+		\hline	
+		Cargo Containers&  MED1 & MED2 & MED3 & A & B & C & D & E & F & G & H \\
+		\hline	 
+		X & 606 & & &2 &9 & 7 & 10 & 8 & 2 &9 & 1\\  
+		Y & 1818 & 1212 & 1212 &1 &4 & 3 & 20 & 20 & 5 &15 & 1\\    
+		Z & 1818 &  & 1212 &2 &8 & 5 & 8 & 5 & 2 &7 & 1\\ 
+		\hline
+	\end{tabular}
+	
+	
+	\item The best locations on Puerto Rico to position these cargo containers are shown in the following figure.\\
+	
+	\begin{figure}[h]
+		\small
+		\centering
+		\includegraphics[width=15cm]{10.png}
+		\caption{Locations} \label{fig:10}
+	\end{figure}
+	
+	\item Based on the above results, DraneGo may conduct medical supply for 606 days, and realize video reconnaissance of road networks which are marked black in the above figure.\\
+	
 \end{itemize}
-
+\newpage 
 \noindent$\mathbf{Recommendations:}$
 \begin{itemize}
-	\item 
-	\item 
+	\item Containers in different locations are faced with different demands, and the corresponding packing problem needs to be considered separately. 
+	\item The suitable locations to position cargo containers should be as dispersed as possible on the premise of meeting medical supply.
+	\item If the drone is rechargeable, a reasonable flight plan may make it more efficient. 
 \end{itemize}
 
 \noindent We hope that our suggestions are helpful. Please contact us if you have any questions.
-
-
+\newpage 
 
 \begin{thebibliography}{99}
-\bibitem{1} D.~E. KNUTH   The \TeX{}book  the American
-Mathematical Society and Addison-Wesley
-Publishing Company , 1984-1986.
-\bibitem{2}Lamport, Leslie,  \LaTeX{}: `` A Document Preparation System '',
-Addison-Wesley Publishing Company, 1986.
-\bibitem{3}\url{http://www.latexstudio.net/}
-\bibitem{4}\url{http://www.chinatex.org/}
+	\bibitem{1} Maarouf W F , Barbar A M , Owayjan M J . A New Heuristic Algorithm for the 3D Bin Packing Problem[M]
+	\bibitem{2}Hu H, Zhang X, Yan X, et al. Solving a New 3D Bin Packing Problem with Deep Reinforcement Learning Method[J]. 2017.
+	\bibitem{3}\url{https://en.wikipedia.org/wiki/Simulated_annealing}
+	\bibitem{4}\url{https://en.wikipedia.org/wiki/Bin_packing_problem}
+	\bibitem{5}Cruz-Reyes L, Nieto-Yáñez D M, Tomás-Solis P, et al. Solving Bin Packing Problem with a Hybridization of Hard Computing and Soft Computing[M]
+	\bibitem{6}Fu Z D , University X , Xiamen, et al. A Hybrid Simulated Annealing Algorithm for the Three-Dimensional Packing Problem[J]. Chinese Journal of Computers, 2009, 32(11):2147-2156.
+	\bibitem{7}Faina L . A global optimization algorithm for the three-dimensional packing problem[J]. European Journal of Operational Research, 2000, 126(2):340-354.
 \end{thebibliography}
 
 \begin{appendices}
 
-\section{First appendix}
+\section{Simulated annealing algorithm}
 
-\lipsum[13]
 
-Here are simulation programmes we used in our model as follow.\\
+Here are programmes we used in our model as follow.\\
 
-\textbf{\textcolor[rgb]{0.98,0.00,0.00}{Input matlab source:}}
-\lstinputlisting[language=Matlab]{./code/mcmthesis-matlab1.m}
+\textbf{\textcolor[rgb]{0.98,0.00,0.00}{Matlab code}}
+\lstinputlisting[language=Matlab]{./code/Packing_ANN.m}
+\lstinputlisting[language=Matlab]{./code/packing_st.m}
+\lstinputlisting[language=Matlab]{./code/ADRRS_Main.m}
 
-\section{Second appendix}
 
-some more text \textcolor[rgb]{0.98,0.00,0.00}{\textbf{Input C++ source:}}
-\lstinputlisting[language=C++]{./code/mcmthesis-sudoku.cpp}
+
+\section{Dijkstra's shortest path algorithm}
+
+some more text \textcolor[rgb]{0.98,0.00,0.00}{\textbf{C++ code:}}
+\lstinputlisting[language=C++]{./code/main.cpp}
 
 \end{appendices}
 \end{document}
